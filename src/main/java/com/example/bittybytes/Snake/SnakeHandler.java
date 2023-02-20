@@ -1,5 +1,6 @@
 package com.example.bittybytes.Snake;
 
+import com.example.bittybytes.Controllers.SnakeController;
 import com.example.bittybytes.SceneManager;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;

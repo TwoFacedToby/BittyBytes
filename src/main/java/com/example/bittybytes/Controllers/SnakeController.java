@@ -1,4 +1,4 @@
-package com.example.bittybytes.Snake;
+package com.example.bittybytes.Controllers;
 
 import com.example.bittybytes.SceneManager;
 import com.example.bittybytes.Snake.SnakeHandler;

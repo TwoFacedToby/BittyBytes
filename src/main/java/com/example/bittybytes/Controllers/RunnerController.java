@@ -1,5 +1,6 @@
-package com.example.bittybytes.Runner;
+package com.example.bittybytes.Controllers;
 
+import com.example.bittybytes.Runner.Obstacles;
 import com.example.bittybytes.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

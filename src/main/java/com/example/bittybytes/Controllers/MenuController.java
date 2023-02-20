@@ -1,4 +1,4 @@
-package com.example.bittybytes.Menu;
+package com.example.bittybytes.Controllers;
 
 import com.example.bittybytes.SceneManager;
 import javafx.fxml.FXML;

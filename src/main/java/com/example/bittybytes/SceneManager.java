@@ -1,13 +1,13 @@
 package com.example.bittybytes;
 
-import com.example.bittybytes.Labyrinth.LabyrinthController;
+import com.example.bittybytes.Controllers.LabyrinthController;
 import com.example.bittybytes.Labyrinth.LabyrinthHandler;
-import com.example.bittybytes.Menu.MenuController;
-import com.example.bittybytes.Runner.RunnerController;
+import com.example.bittybytes.Controllers.MenuController;
+import com.example.bittybytes.Controllers.RunnerController;
 import com.example.bittybytes.Runner.RunnerHandler;
-import com.example.bittybytes.Snake.SnakeController;
+import com.example.bittybytes.Controllers.SnakeController;
 import com.example.bittybytes.Snake.SnakeHandler;
-import com.example.bittybytes.SortingAlgorithms.SortingController;
+import com.example.bittybytes.Controllers.SortingController;
 import com.example.bittybytes.SortingAlgorithms.SortingHandler;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +16,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class SceneManager {
@@ -49,44 +50,44 @@ public class SceneManager {
         return sceneManager;
     }
 
-    public void start(Stage s){
+    public void start(Stage s) throws IOException {
         stage = s;
         loadScenes();
         switchScene ("menu");
     }
-    private void loadScenes(){
-        try{
-            fxmlLoader = new FXMLLoader(Main.class.getResource("menu.fxml"));
+    private void loadScenes() throws IOException {
+        //try{
+            fxmlLoader = new FXMLLoader(SceneManager.class.getResource("menu.fxml"));
             menu = fxmlLoader.load();
             scenes.add(new Scene(menu, 600, 400));
             menuController = fxmlLoader.getController();
             sceneNames.add("menu");
-            fxmlLoader = new FXMLLoader(Main.class.getResource("snakeView.fxml"));
+            fxmlLoader = new FXMLLoader(SceneManager.class.getResource("snakeView.fxml"));
             snake = fxmlLoader.load();
             scenes.add(new Scene(snake, 1200, 800));
             snakeController = fxmlLoader.getController();
             sceneNames.add("Snake");
-            fxmlLoader = new FXMLLoader(Main.class.getResource("runnerView.fxml"));
+            fxmlLoader = new FXMLLoader(SceneManager.class.getResource("runnerView.fxml"));
             runner = fxmlLoader.load();
             scenes.add(new Scene(runner, 1200, 800));
             runnerController = fxmlLoader.getController();
             sceneNames.add("Runner");
-            fxmlLoader = new FXMLLoader(Main.class.getResource("sortingView.fxml"));
+            fxmlLoader = new FXMLLoader(SceneManager.class.getResource("sortingView.fxml"));
             sort = fxmlLoader.load();
             scenes.add(new Scene(sort, 1200, 800));
             sortingController = fxmlLoader.getController();
             sceneNames.add("Sorting");
-            fxmlLoader = new FXMLLoader(Main.class.getResource("labyrinth.fxml"));
+            fxmlLoader = new FXMLLoader(SceneManager.class.getResource("labyrinth.fxml"));
             maze = fxmlLoader.load();
             scenes.add(new Scene(maze, 1200, 800));
             mazeController = fxmlLoader.getController();
             sceneNames.add("Maze");
 
-
+        /*
 
         }catch (Exception e){
             System.out.println("Cannot load scenes");
-        }
+        }*/
     }
     public ArrayList<String> getSceneNames(){
         return sceneNames;
@@ -160,14 +161,14 @@ public class SceneManager {
         stage.setTitle("Sorting Algorithms");
         stage.setScene(scenes.get(3));
         stage.show();
-        //sortingController.initBoard();
+        sortingController.initBoard();
         sortingHandler = new SortingHandler();
         sortingHandler.initiate();
         stage.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>
                 () {
             @Override
             public void handle(KeyEvent t) {
-                runnerHandler.input(t);
+                sortingHandler.input(t);
             }
         });
     }
@@ -195,6 +196,9 @@ public class SceneManager {
     }
     public RunnerHandler getRunnerHandler() {
         return runnerHandler;
+    }
+    public SortingHandler getSortingHandler(){
+        return sortingHandler;
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.bittybytes.Labyrinth;
+package com.example.bittybytes.Controllers;
 
 public class LabyrinthController {
 
