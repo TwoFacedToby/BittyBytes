@@ -16,7 +16,7 @@ public class Obstacles {
         //Size: x, y - Position: x, y
         createBox(shapes.get(0), 15, 65, 1086, 387); //Thin tall
         createBox(shapes.get(1), 48, 48, 1053, 404); //Medium Squarre
-        createBox(shapes.get(2), 69, 19, 1032, 433); //Low Long
+        createBox(shapes.get(2), 69, 35, 1032, 417); //Low Long
         createBox(shapes.get(3), 69, 37, 1032, 318); //Flying
     }
     private void createBox(int[] a, int width, int height, int x, int y){
@@ -31,8 +31,8 @@ public class Obstacles {
         int[] shape = shapes.get(rnd.nextInt(0, amount));
         VBox b = new VBox();
         b.setPrefSize(shape[0], shape[1]);
-        b.setTranslateX(shape[2]);
-        b.setTranslateY(shape[3]);
+        b.setLayoutX(shape[2]);
+        b.setLayoutY(shape[3]);
         b.setStyle("-fx-border-color: #eeeeee");
         return b;
     }

@@ -6,39 +6,26 @@ public class isBoxesHitting {
     public boolean isHitting(VBox a, VBox b){
         double aX = a.getLayoutX();
         double aY = a.getLayoutY();
-        double bX = a.getLayoutX();
-        double bY = a.getLayoutY();
-        double aW = a.getWidth();
-        double aH = a.getHeight();
-        double bW = b.getWidth();
-        double bH = b.getHeight();
-
-        double[] aWalls = new double[4];
-        double[] bWalls = new double[4];
-
-        //Anchorpoint at top left corner
-        aWalls[0] = aX-(aW/2);  //left
-        aWalls[1] = aX+(aW/2);  //Right
-        aWalls[2] = aY-(aH/2);  //Top
-        aWalls[3] = aY+(aH/2);  //Bottom
-        bWalls[0] = bX-(bW/2);  //left
-        bWalls[1] = bX+(bW/2);  //Right
-        bWalls[2] = bY-(bH/2);  //Top
-        bWalls[3] = bY+(bH/2);  //Bottom
+        double bX = b.getLayoutX();
+        double bY = b.getLayoutY();
+        double aW = a.getWidth()/2;
+        double aH = a.getHeight()/2;
+        double bW = b.getWidth()/2;
+        double bH = b.getHeight()/2;
 
         boolean xWithin = false;
         boolean yWithin = false;
 
-        if(aWalls[0] > bWalls[0] && bWalls[0] > aWalls[1]){ //B's left wall is within A's walls with the x position.
+        if(aX-aW > bX-bW && aX-aW < bX+bW){ //is a's left wall between b's left and right wall
             xWithin = true;
         }
-        if(aWalls[0] > bWalls[1] && bWalls[1] > aWalls[1]){ //B's right wall is within A's walls with the x position.
+        else if(aX+aW > bX-bW && aX+aW < bX+bW){ //is a's right wall between b's left and right wall
             xWithin = true;
         }
-        if(aWalls[2] > bWalls[0] && bWalls[2] > aWalls[3]){ //B's Top wall is within A's walls with the y position.
+        if(aY-aH > bY-bH && aY-aH < bY+bH){ //is a's bottom wall between b's top and bottom wall
             yWithin = true;
         }
-        if(aWalls[2] > bWalls[1] && bWalls[3] > aWalls[3]){ //B's Bottom wall is within A's walls with the y position.
+        else if(aY+aH > bY-bH && aY+aH < bY+bH){ //is a's top wall between b's top and bottom wall
             yWithin = true;
         }
         if(xWithin && yWithin) return true;

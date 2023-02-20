@@ -29,7 +29,6 @@ public class RunnerUpdate {
         setUpdateSpeed(16); //16.6667 is 60 frames pr second
         SceneManager.get().runnerController.dead(false);
         SceneManager.get().runnerController.setHighScoreText((int)Math.floor(highScore)+"");
-
     }
 
     private void setUpdateSpeed(double millis){
@@ -77,7 +76,7 @@ public class RunnerUpdate {
         if(currentObstacles != null && currentObstacles.size() > 0){
             for(int i = 0; i < currentObstacles.size(); i++){
 
-                if(currentObstacles.get(i).getTranslateX() < 6){
+                if(currentObstacles.get(i).getLayoutX() < 6){
                     //Remove Obstacle
                     SceneManager.get().runnerController.removeObstacle(currentObstacles.get(i));
                     currentObstacles.remove(i);
@@ -91,7 +90,6 @@ public class RunnerUpdate {
                 }
             }
         }
-
 
         if(timer < obstacleTime) timer++;
         else{
@@ -112,6 +110,7 @@ public class RunnerUpdate {
         highScore = score;
         score = 0;
         SceneManager.get().runnerController.setScoreText((int)Math.floor(score)+"");
+        stopUpdate();
         startUpdate();
     }
 
