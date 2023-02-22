@@ -140,7 +140,7 @@
                               <Button fx:id="shell" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Shell" />
                            </children>
                         </FlowPane>
-                        <Slider fx:id="slider" onDragDone="#setSpeed" showTickLabels="true">
+                        <Slider fx:id="slider" onMouseReleased="#setSpeed" showTickLabels="true">
                            <effect>
                               <ColorAdjust brightness="1.0" />
                            </effect>
@@ -155,7 +155,7 @@
                               <Font name="Century Gothic" size="22.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="arraySize" alignment="CENTER" prefHeight="4.0" prefWidth="230.0" style="-fx-background-color: #eeeeee; -fx-background-radius: 9;" text="1000">
+                        <TextField fx:id="arraySize" alignment="CENTER" onAction="#setArraySize" prefHeight="4.0" prefWidth="230.0" style="-fx-background-color: #eeeeee; -fx-background-radius: 9;" text="1000">
                            <font>
                               <Font name="Century Gothic" size="22.0" />
                            </font>

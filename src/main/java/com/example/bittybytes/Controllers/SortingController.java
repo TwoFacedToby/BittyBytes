@@ -62,6 +62,8 @@ public class SortingController {
     Button current;
 
     ArrayList<Button> buttons;
+    double height;
+    double width;
 
     public void initBoard(){
         System.out.println("init board");
@@ -87,14 +89,10 @@ public class SortingController {
         run.setOnMouseEntered(e -> mouseOver(true, run));
         run.setOnMouseExited(e -> mouseOver(false, run));
         mouseOver(false, run);
+        height = window.getHeight();
+        width = window.getWidth();
 
 
-        ArrayList<Integer> test = new ArrayList<>();
-
-        for(int i = 1; i < 4000; i++){
-            test.add(i);
-        }
-        draw(test);
     }
 
     private void pressed(Button b){
@@ -128,8 +126,9 @@ public class SortingController {
     @FXML
     public void setSpeed(){
         double value = Math.floor(slider.getValue());
-        SceneManager.get().getSortingHandler().setSpeed(value);
         operationSpeed.setText(value+"%");
+        SceneManager.get().getSortingHandler().setSpeed(value);
+
     }
     @FXML
     public void setArraySize(){
@@ -143,14 +142,12 @@ public class SortingController {
         SceneManager.get().getSortingHandler().run();
     }
     public void clear(){
-
+        window.getChildren().clear();
     }
     public void draw(ArrayList<Integer> toDraw){
         window.getChildren().clear();
-        System.out.println(window.getWidth() + "  " + window.getHeight());
-        double partHeight = window.getHeight()/(double)toDraw.size();
-        double partWidth = window.getWidth()/(double)toDraw.size();
-        System.out.println(partWidth + "  " + partHeight);
+        double partHeight = height/(double)toDraw.size();
+        double partWidth = width/(double)toDraw.size();
         for(int i = 0; i < toDraw.size(); i++){
             VBox vBox = new VBox();
             vBox.setStyle("-fx-background-color: #eeeeee");
@@ -160,17 +157,11 @@ public class SortingController {
             vBox.setMaxWidth(1);
             vBox.setScaleX(partWidth);
             vBox.setScaleY(partHeight*toDraw.get(i));
-            vBox.setLayoutY((partHeight*toDraw.get(i)/-2)+window.getHeight());
+            vBox.setLayoutY((partHeight*toDraw.get(i)/-2)+height);
             vBox.setLayoutX(partWidth*(i)+partWidth*0.5);
-            /*
-            vBox.setMaxWidth(partWidth);
-            vBox.setPrefWidth(partWidth);
-            vBox.setMaxHeight(toDraw.get(i)*partHeight);
-            vBox.setMinHeight(toDraw.get(i)*partHeight);
-            */
-
             window.getChildren().add(vBox);
         }
+
     }
 
 }
