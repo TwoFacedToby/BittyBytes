@@ -9,13 +9,18 @@ public class Algorithms {
     private int operations;
 
     public ArrayList<ArrayList<Integer>> getSorted(ArrayList<Integer> current, String type){
+        operations = 0;
+        step.clear();
+        step.add(current);
         switch (type){
             case "merge":
                 return merge(current);
             case "bubble":
                 return bubble(current);
             case "selection":
+                return selection(current);
             case "insertion":
+                return insertion(current);
             case "quick":
             case "count":
             case "radix":
@@ -35,8 +40,8 @@ public class Algorithms {
         this.operations = operations;
     }
     public boolean control(ArrayList<Integer> toControl){
-        for(int i = 0; i < toControl.size(); i++){
-            if(i < toControl.size()-1 && toControl.get(i) > toControl.get(i+1)){
+        for(int i = 0; i < toControl.size()-1; i++){
+            if(toControl.get(i) > toControl.get(i+1)){
                 return false;
             }
         }
@@ -54,13 +59,13 @@ public class Algorithms {
         }
         return toRandomize;
     }
-    private void insert(ArrayList<Integer> A){
+    private void insert(ArrayList<Integer> A, int start){
         ArrayList<Integer> arr = step.get(step.size()-1);
         ArrayList<Integer> whole = new ArrayList<>();
         for(int i = 0; i < arr.size(); i++){
             whole.add(arr.get(i));
         }
-        int start = -1;
+        /*int start = -1;
         for(int i = 0; i < whole.size(); i++){
             if(start != -1) break;
             for(int j = 0; j < A.size(); j++){
@@ -69,7 +74,7 @@ public class Algorithms {
                     break;
                 }
             }
-        }
+        }*/
 
         for(int i = start; i < start+A.size() && i < whole.size(); i++){
             whole.set(i, A.get(i-start));
@@ -92,33 +97,95 @@ public class Algorithms {
         return arr;
     }
 
+    //region insertion
+    public ArrayList<ArrayList<Integer>> insertion(ArrayList<Integer> toSort){
+        INSERTION_SORT(toSort);
+        return step;
+    }
+    private ArrayList<Integer> INSERTION_SORT(ArrayList<Integer> toSort){
+        for(int i = 1; i < toSort.size(); i++){
+            int j = i;
+            operations++;
+            while (j>0 && toSort.get(j-1) > toSort.get(j)){//while previous element is higher than current.
+                int temp = toSort.get(j); //Swaps the elements
+                toSort.set(j, toSort.get(j-1));
+                toSort.set(j-1, temp);
+                step.add(copy(toSort));
+                j--; //Goes further back the arrayList
+                operations += 5;
+            }
+        }
+        return toSort;
+    }
+
+    //endregion
+
+    //region selection
+    public ArrayList<ArrayList<Integer>> selection(ArrayList<Integer> toSort){
+        SELECTION_LOOP(toSort);
+        return step;
+    }
+    private ArrayList<Integer> SELECTION_LOOP(ArrayList<Integer> toSort){
+        int count = 0;
+        while(!control(toSort)){
+            toSort = SELECTION_SORT(toSort, count);
+            step.add(copy(toSort));
+            count++;
+        }
+        return toSort;
+    }
+    private ArrayList<Integer> SELECTION_SORT(ArrayList<Integer> toSort, int pos){
+        int lowest = -1;
+        int lowestIndex = -1;
+        operations+= 2;
+        for(int i = pos; i < toSort.size(); i++){
+            if(lowest == -1){//If no lowest have been found, set it to the current.
+                lowest = toSort.get(i);
+                lowestIndex = i;
+                operations+= 2;
+            }
+            if(lowest > toSort.get(i)){//if a lower number than current lowest is found, set it to this new one.
+                lowest = toSort.get(i);
+                lowestIndex = i;
+                operations+= 2;
+            }
+            operations+= 2;
+        }
+        operations++;
+        if(lowest != -1){ //Some error has occurred this should not happen and would be outside the arrayList.
+            toSort.set(lowestIndex, toSort.get(pos));
+            toSort.set(pos, lowest);
+            operations+= 2;
+        }
+
+        return toSort;
+    }
+
+
+    //endregion
+
     //region bubble
 
     private ArrayList<ArrayList<Integer>> bubble(ArrayList<Integer> toSort){
-        step.clear();
-        step.add(toSort);
         BUBBLE_LOOP(toSort);
         return step;
     }
     private void BUBBLE_LOOP(ArrayList<Integer> toSort){
         int count = 0;
-        while(!control(toSort) || count < 1000){
+        while(!control(toSort)){
             toSort = BUBBLE_SORT(toSort);
             step.add(copy(toSort));
             count++;
         }
     }
     private ArrayList<Integer> BUBBLE_SORT(ArrayList<Integer> toSort){
-        for(int i = 1; i < toSort.size()-1; i++){
-            if(toSort.get(i-1) < toSort.get(i)){
+        for(int i = 1; i < toSort.size(); i++){
+            operations++;
+            if(toSort.get(i-1) > toSort.get(i)){
                 int temp = toSort.get(i-1);
                 toSort.set(i-1, toSort.get(i));
                 toSort.set(i, temp);
-            }
-            if(toSort.get(i) < toSort.get(i+1)){
-                int temp = toSort.get(i);
-                toSort.set(i, toSort.get(i+1));
-                toSort.set(i+1, temp);
+                operations+=3;
             }
         }
         return toSort;
@@ -128,56 +195,59 @@ public class Algorithms {
     //region merge
 
     public ArrayList<ArrayList<Integer>> merge(ArrayList<Integer> toSort){
-        step.clear();
-        step.add(toSort);
         MERGE_SORT(toSort, toSort.size());
         return step;
     }
     private void MERGE_SORT(ArrayList<Integer> a, int length){
-        ArrayList<Integer> A = MERGE_RECURSION(a);
+        ArrayList<Integer> A = MERGE_RECURSION(a, 0);
         step.add(A);
 
     }
-    private ArrayList<Integer> MERGE_RECURSION(ArrayList<Integer> a){
+    private ArrayList<Integer> MERGE_RECURSION(ArrayList<Integer> a, int start){
+        operations++; //in case this if statement returns
         if(a.size() < 2) return a;
-        int r = a.size();
-        int m = Math.floorDiv(r,2);
-
-        ArrayList<Integer> A1 = new ArrayList<>();
-        ArrayList<Integer> A2 = new ArrayList<>();
-        for(int i = 0; i < m; i++){
+        int r = a.size(); //1
+        int m = Math.floorDiv(r,2);//1
+        ArrayList<Integer> A1 = new ArrayList<>();//1
+        ArrayList<Integer> A2 = new ArrayList<>();//1
+        for(int i = 0; i < m; i++){//m number of operations
             A1.add(a.get(i));
         }
-        for(int i = m; i < r; i++){
+        for(int i = m; i < r; i++){//r-m number of operations
             A2.add(a.get(i));
         }
-        A1 = MERGE_RECURSION(A1);
-        A2 = MERGE_RECURSION(A2);
-        ArrayList<Integer> A = MERGE_SORTED(A1, A2);
-        insert(A);
-        return A;
+        A1 = MERGE_RECURSION(A1, start);//1
+        A2 = MERGE_RECURSION(A2, start + m);//1
+        ArrayList<Integer> A = MERGE_SORTED(A1, A2);//this
+        insert(A, start);
+        operations += 6+m+(r-m); //Total operations for this method
+        return A;//1
     }
 
     private ArrayList<Integer> MERGE_SORTED(ArrayList<Integer> A1, ArrayList<Integer> A2){
-        int n = 0, m = 0, i;
-        ArrayList<Integer> A = new ArrayList<>();
-
-        for(i = 0; i < A1.size()+A2.size(); i++){
+        int n = 0, m = 0, i; //3
+        ArrayList<Integer> A = new ArrayList<>();//1
+        operations += 4;
+        for(i = 0; i < A1.size()+A2.size(); i++){//A1.size()+A2.size()* between 3 to 7. Putting operations in each statement instead
             if(n >= A1.size()){ //Reached end of A1
                 A.add(i, A2.get(m));
                 m++;
+                operations +=3;
             }
             else if(m >= A2.size()){ //Reached end of A2
                 A.add(i, A1.get(n));
                 n++;
+                operations +=4;
             }
             else if(A1.get(n) <= A2.get(m)){
                 A.add(i, A1.get(n));
                 n++;
+                operations +=5;
             }
             else{
                 A.add(i, A2.get(m));
                 m++;
+                operations +=5;
             }
         }
         return A;

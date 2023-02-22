@@ -161,8 +161,8 @@ public class SceneManager {
         stage.setTitle("Sorting Algorithms");
         stage.setScene(scenes.get(3));
         stage.show();
-        sortingController.initBoard();
         sortingHandler = new SortingHandler();
+        sortingController.initBoard();
         sortingHandler.initiate();
         stage.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>
                 () {

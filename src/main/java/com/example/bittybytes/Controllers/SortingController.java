@@ -2,6 +2,7 @@ package com.example.bittybytes.Controllers;
 
 import com.example.bittybytes.SceneManager;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -58,12 +59,18 @@ public class SortingController {
     Button shell;
     @FXML
     Button run;
+    @FXML
+    Label step;
+    @FXML
+    Button valueTypes;
 
     Button current;
 
     ArrayList<Button> buttons;
+    ArrayList<Integer> oldDraw;
     double height;
     double width;
+    boolean typeValue = false;
 
     public void initBoard(){
         System.out.println("init board");
@@ -88,10 +95,13 @@ public class SortingController {
         run.setOnAction(e -> runSort());
         run.setOnMouseEntered(e -> mouseOver(true, run));
         run.setOnMouseExited(e -> mouseOver(false, run));
+        valueTypes.setOnAction(e -> switchValueType());
+        valueTypes.setOnMouseEntered(e -> mouseOver(true, valueTypes));
+        valueTypes.setOnMouseExited(e -> mouseOver(false, valueTypes));
         mouseOver(false, run);
         height = window.getHeight();
         width = window.getWidth();
-
+        setSpeed();
 
     }
 
@@ -124,6 +134,17 @@ public class SortingController {
 
     }
     @FXML
+    public void switchValueType(){
+        typeValue = !typeValue;
+        SceneManager.get().getSortingHandler().typeValue(typeValue);
+        if(typeValue){
+            valueTypes.setText("Random Values");
+        }
+        else{
+            valueTypes.setText("Linear Values");
+        }
+    }
+    @FXML
     public void setSpeed(){
         double value = Math.floor(slider.getValue());
         operationSpeed.setText(value+"%");
@@ -138,11 +159,17 @@ public class SortingController {
     public void setOperations(String s){
         operations.setText(s);
     }
+    public void setSteps(String s){
+        step.setText(s);
+    }
     private void runSort(){
+        setSpeed();
+        setArraySize();
         SceneManager.get().getSortingHandler().run();
     }
     public void clear(){
         window.getChildren().clear();
+        oldDraw = null;
     }
     public void draw(ArrayList<Integer> toDraw){
         window.getChildren().clear();
@@ -150,7 +177,7 @@ public class SortingController {
         double partWidth = width/(double)toDraw.size();
         for(int i = 0; i < toDraw.size(); i++){
             VBox vBox = new VBox();
-            vBox.setStyle("-fx-background-color: #eeeeee");
+            getColor(i, vBox, toDraw.get(i));
             vBox.setMinHeight(1);
             vBox.setMaxHeight(1);
             vBox.setMinWidth(1);
@@ -160,6 +187,24 @@ public class SortingController {
             vBox.setLayoutY((partHeight*toDraw.get(i)/-2)+height);
             vBox.setLayoutX(partWidth*(i)+partWidth*0.5);
             window.getChildren().add(vBox);
+        }
+        oldDraw = toDraw;
+    }
+    private void getColor(int i, Node node, int value){
+        if(oldDraw == null){
+            node.setStyle("-fx-background-color: #eeeeee");
+            return;
+        }
+        if(value == oldDraw.get(i)){
+            node.setStyle("-fx-background-color: #eeeeee");
+        }
+        else{
+            node.setStyle("-fx-background-color: #ff1f1f");
+        }
+    }
+    public void finished(int pos){
+        if(window.getChildren().size() > pos && pos >= 0){
+            window.getChildren().get(pos).setStyle("-fx-background-color: #26dc0e");
         }
 
     }

@@ -5,18 +5,21 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class SortingHandler {
 
-    private double speed = 1;
+    private double speed = 15;
     private double operations = 0;
     private int step = 0;
     private int arraySize = 0;
+    private int finishedCount = 0;
     private String type;
     private Update updater = new Update(this);
     private Algorithms algorithms = new Algorithms();
     private ArrayList<Integer> list = new ArrayList<>();
     private ArrayList<ArrayList<Integer>> all = new ArrayList<>();
+    private boolean valueType = false;
     public void initiate(){
 
     }
@@ -74,7 +77,6 @@ public class SortingHandler {
                 System.out.println(algorithm + " sort is not part of this application");
                 break;
         }
-        clear();
     }
     private void changeAlgorithmOnScreen(String text){
         SceneManager.get().sortingController.setAlgorithm(text);
@@ -108,16 +110,25 @@ public class SortingHandler {
         if(type == null || type.equals("")) return;
         step = 0;
         all = algorithms.getSorted(list, type);
+        finishedCount = list.size();
         updater.setUpdateSpeed(speed);
     }
     public void update(){
         if(step < all.size()){
             SceneManager.get().sortingController.draw(all.get(step));
             SceneManager.get().sortingController.setOperations(algorithms.getOperations()+"");
+            SceneManager.get().sortingController.setSteps(step+"");
             step++;
         }
         else{
-            stopUpdate();
+            if(finishedCount > -2){
+                SceneManager.get().sortingController.finished(list.size()-finishedCount);
+                finishedCount--;
+            }
+            else{
+                stopUpdate();
+            }
+
         }
     }
     public void stopUpdate(){
@@ -131,9 +142,19 @@ public class SortingHandler {
     }
     private void fillList(){
         list.clear();
+        Random rnd = new Random();
         for(int i = 1; i <= arraySize; i++){
-            list.add(i);
+            if(valueType){ //Random values
+                list.add(rnd.nextInt(1, arraySize));
+            }
+            else list.add(i); //Linear values
         }
+    }
+    public void typeValue(boolean type){//True = random - False = linear
+        valueType = type;
+        fillList();
+        randomize();
+        SceneManager.get().sortingController.draw(list);
     }
     private void randomize(){
         algorithms.randomize(list, 3);
