@@ -76,12 +76,12 @@ public class SceneManager {
             sort = fxmlLoader.load();
             scenes.add(new Scene(sort, 1200, 800));
             sortingController = fxmlLoader.getController();
-            sceneNames.add("Sorting");
+            sceneNames.add("Sorting Algorithms");
             fxmlLoader = new FXMLLoader(SceneManager.class.getResource("labyrinth.fxml"));
             maze = fxmlLoader.load();
             scenes.add(new Scene(maze, 1200, 800));
             mazeController = fxmlLoader.getController();
-            sceneNames.add("Maze");
+            sceneNames.add("Pathfinding");
 
         /*
 
@@ -108,10 +108,10 @@ public class SceneManager {
             case "Runner":
                 toRunner();
                 break;
-            case "Sorting":
+            case "Sorting Algorithms":
                 toSorting();
                 break;
-            case "Maze":
+            case "Pathfinding":
                 toMaze();
                 break;
             default:
@@ -173,7 +173,7 @@ public class SceneManager {
         });
     }
     private void toMaze(){
-        stage.setTitle("Maze");
+        stage.setTitle("Pathfinding");
         stage.setScene(scenes.get(4));
         stage.show();
         mazeController.initBoard();

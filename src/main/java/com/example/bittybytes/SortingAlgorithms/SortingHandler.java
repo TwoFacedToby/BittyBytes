@@ -14,6 +14,7 @@ public class SortingHandler {
     private int step = 0;
     private int arraySize = 0;
     private int finishedCount = 0;
+    private int minus = 0;
     private String type;
     private Update updater = new Update(this);
     private Algorithms algorithms = new Algorithms();
@@ -111,19 +112,21 @@ public class SortingHandler {
         step = 0;
         all = algorithms.getSorted(list, type);
         finishedCount = list.size();
+        minus = Math.ceilDiv(finishedCount, 100);
         updater.setUpdateSpeed(speed);
     }
     public void update(){
         if(step < all.size()){
             SceneManager.get().sortingController.draw(all.get(step));
             SceneManager.get().sortingController.setOperations(algorithms.getOperations()+"");
-            SceneManager.get().sortingController.setSteps(step+"");
+            SceneManager.get().sortingController.setSteps(step + " / " + (all.size()-1));
             step++;
         }
         else{
             if(finishedCount > -2){
-                SceneManager.get().sortingController.finished(list.size()-finishedCount);
-                finishedCount--;
+
+                SceneManager.get().sortingController.finished(list.size()-finishedCount, minus);
+                finishedCount-= minus;
             }
             else{
                 stopUpdate();

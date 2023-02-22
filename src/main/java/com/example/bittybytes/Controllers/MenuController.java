@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.text.TextAlignment;
 
 import java.util.ArrayList;
 
@@ -32,6 +33,8 @@ public class MenuController {
                 b.setOnAction(e -> buttonPressed(b));
                 b.setText(scenes.get(i));
                 b.setStyle("-fx-text-fill: #cccccc; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-color: #404040");
+                b.setWrapText(true);
+                b.setTextAlignment(TextAlignment.CENTER);
                 b.setPrefSize(80, 80);
                 b.setOnMouseEntered(e -> onMouse(b,true));
                 b.setOnMouseExited(e -> onMouse(b,false));

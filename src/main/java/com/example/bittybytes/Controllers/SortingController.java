@@ -202,10 +202,13 @@ public class SortingController {
             node.setStyle("-fx-background-color: #ff1f1f");
         }
     }
-    public void finished(int pos){
-        if(window.getChildren().size() > pos && pos >= 0){
-            window.getChildren().get(pos).setStyle("-fx-background-color: #26dc0e");
+    public void finished(int pos, int amount){
+        for(int i = 0; i < amount; i++){
+            if(window.getChildren().size() > pos+i && pos >= 0){
+                window.getChildren().get(pos+i).setStyle("-fx-background-color: #26dc0e");
+            }
         }
+
 
     }
 

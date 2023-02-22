@@ -123,6 +123,7 @@ public class Algorithms {
     //region selection
     public ArrayList<ArrayList<Integer>> selection(ArrayList<Integer> toSort){
         SELECTION_LOOP(toSort);
+        step.add(toSort);
         return step;
     }
     private ArrayList<Integer> SELECTION_LOOP(ArrayList<Integer> toSort){
