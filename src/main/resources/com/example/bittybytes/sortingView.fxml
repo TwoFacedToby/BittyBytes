@@ -12,51 +12,52 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bittybytes.Controllers.SortingController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bittybytes.Controllers.SortingController">
     <children>
         <VBox alignment="CENTER" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #202020;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                     <children>
-                  <VBox alignment="CENTER_LEFT" layoutX="347.0" layoutY="10.0" prefHeight="98.0" prefWidth="383.0">
+                  <VBox alignment="CENTER_LEFT" layoutX="347.0" layoutY="10.0" prefHeight="100.0" prefWidth="244.0">
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="200.0" spacing="8.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="100.0" spacing="8.0">
                            <children>
                               <Label prefHeight="28.0" prefWidth="111.0" text="Worst" textFill="#cccccc">
                                  <font>
                                     <Font name="Century Gothic" size="22.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="worst" prefHeight="28.0" prefWidth="98.0" text="n" textFill="#cccccc">
+                              <Label fx:id="worst" alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="120.0" text="n" textFill="#cccccc">
                                  <font>
                                     <Font name="Century Gothic" size="22.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="200.0" spacing="8.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="100.0" spacing="8.0">
                            <children>
                               <Label prefHeight="28.0" prefWidth="110.0" text="Average" textFill="#cccccc">
                                  <font>
                                     <Font name="Century Gothic" size="22.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="average" prefHeight="28.0" prefWidth="109.0" text="n" textFill="#cccccc">
+                              <Label fx:id="average" alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="120.0" text="n" textFill="#cccccc">
                                  <font>
                                     <Font name="Century Gothic" size="22.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="200.0" spacing="8.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="242.0" spacing="8.0">
                            <children>
                               <Label prefHeight="28.0" prefWidth="110.0" text="Best" textFill="#cccccc">
                                  <font>
                                     <Font name="Century Gothic" size="22.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="best" prefHeight="28.0" prefWidth="105.0" text="n" textFill="#cccccc">
+                              <Label fx:id="best" alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="120.0" text="n" textFill="#cccccc">
                                  <font>
                                     <Font name="Century Gothic" size="22.0" />
                                  </font>
@@ -127,13 +128,150 @@
                         </HBox>
                      </children>
                   </VBox>
+                  <Button fx:id="help" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #202020; -fx-border-color: #eeeeee;" text="?" textFill="WHITE" translateX="-8.0" translateY="-25.0">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Button>
                     </children>
                 </HBox>
                 <StackPane prefHeight="150.0" prefWidth="200.0">
                     <children>
                         <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="1103.0" style="-fx-border-color: #cccccc;">
                      <children>
-                        <AnchorPane fx:id="window" prefHeight="624.0" prefWidth="1101.0" />
+                        <StackPane prefHeight="639.0" prefWidth="1101.0">
+                           <children>
+                              <AnchorPane fx:id="window" prefHeight="624.0" prefWidth="1101.0" />
+                              <VBox fx:id="helpScreen" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #202020;">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+                                       <children>
+                                          <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+                                             <children>
+                                                <VBox alignment="CENTER_LEFT" maxWidth="-Infinity" prefHeight="0.0" prefWidth="0.0">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Steps" wrappingWidth="500.0">
+                                                         <font>
+                                                            <Font name="Century Gothic Bold" size="20.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fill="WHITE" layoutX="506.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Steps are copies of the array during the sorting process, it is shown with a delay so the user can see the sorting visually. If there are more than 2000 steps the array will be reduced by removing parts in the middle. This ensures that the user doesn't have to wait a long time, and that the all sorting times are about the same." wrappingWidth="500.0">
+                                                         <font>
+                                                            <Font name="Century Gothic" size="16.0" />
+                                                         </font>
+                                                      </Text>
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER_LEFT" maxWidth="-Infinity" prefHeight="0.0" prefWidth="0.0">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Operations" wrappingWidth="500.0">
+                                                         <font>
+                                                            <Font name="Century Gothic Bold" size="20.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fill="WHITE" layoutX="506.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Operations is counted during the process of the sorting, the higher amount of operations the longer the array took to sort." wrappingWidth="500.0">
+                                                         <font>
+                                                            <Font name="Century Gothic" size="16.0" />
+                                                         </font>
+                                                      </Text>
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER_LEFT" maxWidth="-Infinity" prefHeight="0.0" prefWidth="0.0">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Delay" wrappingWidth="500.0">
+                                                         <font>
+                                                            <Font name="Century Gothic Bold" size="20.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fill="WHITE" layoutX="506.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delay is controlled with the slider below. 15% is a good point for most arrays. if the array is small it might be good to up the percentage as it will be easier to understand what is happening" wrappingWidth="500.0">
+                                                         <font>
+                                                            <Font name="Century Gothic" size="16.0" />
+                                                         </font>
+                                                      </Text>
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="258.0" maxWidth="-Infinity" prefHeight="0.0" prefWidth="0.0">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Worst, Best &amp; Average" wrappingWidth="500.0">
+                                                         <font>
+                                                            <Font name="Century Gothic Bold" size="20.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fill="WHITE" layoutX="506.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Worst, Best and Average determines how effective the algorithms are, n is the length of the given array. Worst is the worst case, if the array is randomly sorted the worst way before running, Best is the best case." wrappingWidth="500.0">
+                                                         <font>
+                                                            <Font name="Century Gothic" size="16.0" />
+                                                         </font>
+                                                      </Text>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+                                             <children>
+                                                <VBox alignment="CENTER_LEFT" maxWidth="-Infinity" prefHeight="0.0" prefWidth="0.0">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Array Size" wrappingWidth="500.0">
+                                                         <font>
+                                                            <Font name="Century Gothic Bold" size="20.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fill="WHITE" layoutX="506.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Array size determines the size of the array, it will be maximum 2000 as above that the simulation starts to slow. Many sorting algorithms are fast even above this point, it is only to ease the visual aspect of them." wrappingWidth="500.0">
+                                                         <font>
+                                                            <Font name="Century Gothic" size="16.0" />
+                                                         </font>
+                                                      </Text>
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER_LEFT" maxWidth="-Infinity" prefHeight="0.0" prefWidth="0.0">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Linear Values / Random Values" wrappingWidth="500.0">
+                                                         <font>
+                                                            <Font name="Century Gothic Bold" size="20.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fill="WHITE" layoutX="506.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Button in the bottom right corner determines the type of values in the array. Linear is all full numbers between 1 and the array size, with no duplicates. If pressed it becomes Random values, which are random values between 1 and array Size, duplicates are possible here." wrappingWidth="500.0">
+                                                         <font>
+                                                            <Font name="Century Gothic" size="16.0" />
+                                                         </font>
+                                                      </Text>
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="134.0" maxWidth="-Infinity" prefHeight="0.0" prefWidth="0.0">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Sorting Algorithm Buttons" wrappingWidth="500.0">
+                                                         <font>
+                                                            <Font name="Century Gothic Bold" size="20.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fill="WHITE" layoutX="506.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Buttons above the slider on the bottom of the screen, are different types of sorting algorithms, when clicked an algorithm is showed at the top of the screen and when the simulation is run, then the array is sorted using this algorithm and the user can see how." wrappingWidth="500.0">
+                                                         <font>
+                                                            <Font name="Century Gothic" size="16.0" />
+                                                         </font>
+                                                      </Text>
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="278.0" maxWidth="-Infinity" prefHeight="0.0" prefWidth="0.0">
+                                                   <children>
+                                                      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Run" wrappingWidth="500.0">
+                                                         <font>
+                                                            <Font name="Century Gothic Bold" size="20.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fill="WHITE" layoutX="506.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Run Button in the bottom right corner runs the simulation. It cannot run if you have not chosen a sorting algorithm first." wrappingWidth="500.0">
+                                                         <font>
+                                                            <Font name="Century Gothic" size="16.0" />
+                                                         </font>
+                                                      </Text>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
                      </children></VBox>
                     </children>
                 </StackPane>

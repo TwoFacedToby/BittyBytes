@@ -25,14 +25,14 @@ public class Main extends Application {
     static private void test(){
         ArrayList<Integer> list = new ArrayList<>();
         Algorithms algorithms = new Algorithms();
-        for(int i = 1; i <= 20; i++){
+        for(int i = 1; i <= 10; i++){ //array size <------
             list.add(i);
         }
         print(list);
         algorithms.randomize(list, 3);
         print(list);
 
-        ArrayList<ArrayList<Integer>> all = algorithms.merge(list);
+        ArrayList<ArrayList<Integer>> all = algorithms.heap(list);   //Algorithm type <------
 
         for(int i = 0; i < all.size(); i++){
             print(all.get(i));

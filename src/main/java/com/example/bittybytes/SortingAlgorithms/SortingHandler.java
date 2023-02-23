@@ -111,6 +111,13 @@ public class SortingHandler {
         if(type == null || type.equals("")) return;
         step = 0;
         all = algorithms.getSorted(list, type);
+        while(all.size() > 2000){ //Shortens the visualized array to a point where it doesn't take too long to go through them
+            for(int i = 0; i < all.size(); i+= 25){ //Does it for every 25th to make sure most of the array is intact
+                if(i < all.size()-30){ //Doesn't remove the last 30 to make sure the array keeps it's last finished positions.
+                    all.remove(i);
+                }
+            }
+        }
         finishedCount = list.size();
         minus = Math.ceilDiv(finishedCount, 100);
         updater.setUpdateSpeed(speed);

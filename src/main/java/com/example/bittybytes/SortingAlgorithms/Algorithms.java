@@ -11,9 +11,9 @@ public class Algorithms {
     public ArrayList<ArrayList<Integer>> getSorted(ArrayList<Integer> current, String type){
         operations = 0;
         step.clear();
-        step.add(current);
         switch (type){
             case "merge":
+                step.add(copy(current));
                 return merge(current);
             case "bubble":
                 return bubble(current);
@@ -21,11 +21,12 @@ public class Algorithms {
                 return selection(current);
             case "insertion":
                 return insertion(current);
+            case "heap":
+                return heap(current);
             case "quick":
             case "count":
             case "radix":
             case "bucket":
-            case "heap":
             case "shell":
             default:
                 System.out.println(type + " does not exist");
@@ -65,21 +66,12 @@ public class Algorithms {
         for(int i = 0; i < arr.size(); i++){
             whole.add(arr.get(i));
         }
-        /*int start = -1;
-        for(int i = 0; i < whole.size(); i++){
-            if(start != -1) break;
-            for(int j = 0; j < A.size(); j++){
-                if(whole.get(i) == A.get(j)){
-                    start = i;
-                    break;
-                }
-            }
-        }*/
 
         for(int i = start; i < start+A.size() && i < whole.size(); i++){
             whole.set(i, A.get(i-start));
         }
         step.add(whole);
+
     }
     private void print(ArrayList<Integer> list){
         System.out.print("[");
@@ -96,6 +88,80 @@ public class Algorithms {
         }
         return arr;
     }
+
+    //region shell
+
+    //endregion
+    //region heap
+    public ArrayList<ArrayList<Integer>> heap(ArrayList<Integer> toSort){
+        HEAP_SORT(toSort);
+        return step;
+    }
+    private void HEAP_SORT(ArrayList<Integer> toSort){
+        int length = toSort.size();
+        operations++;
+
+        //Build heap
+        for(int i = Math.floorDiv(length, 2) - 1; i >= 0; i--){ //might need ceilDiv
+            HEAP_RECURSION(toSort, length, i);
+        }
+
+
+        // One by one extract an element from heap
+        for (int i = length - 1; i > 0; i--) {
+            // Move current root to end
+            int temp = toSort.get(0);
+            toSort.set(0, toSort.get(i));
+            toSort.set(i, temp);
+            operations+= 3;
+            // call max HEAP on the reduced heap
+            HEAP_RECURSION(toSort, i, 0);
+        }
+    }
+    private void HEAP_RECURSION(ArrayList<Integer> toSort, int length, int i){
+        int largest = i; // Initialize largest as root
+        int left = 2 * i + 1; // left = 2*i + 1
+        int right = 2 * i + 2; // right = 2*i + 2
+
+        // If left child is larger than root
+        if (left < length && toSort.get(left) >  toSort.get(largest)){
+            largest = left;
+            operations++;
+        }
+
+
+        // If right child is larger than largest so far
+        if (right < length &&  toSort.get(right) >  toSort.get(largest)){
+            largest = right;
+            operations++;
+        }
+
+
+        // If largest is not root
+        if (largest != i) {
+            int swap =  toSort.get(i);
+            toSort.set(i, toSort.get(largest));
+            toSort.set(largest, swap);
+            operations += 3;
+            // Recursively HEAP the affected sub-tree
+            HEAP_RECURSION(toSort, length, largest);
+        }
+        operations += 6;
+        step.add(copy(toSort));
+    }
+    //endregion
+    //region bucket
+
+    //endregion
+    //region radix
+
+    //endregion
+    //region count
+
+    //endregion
+    //region quick
+
+    //endregion
 
     //region insertion
     public ArrayList<ArrayList<Integer>> insertion(ArrayList<Integer> toSort){

@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
@@ -63,7 +62,10 @@ public class SortingController {
     Label step;
     @FXML
     Button valueTypes;
-
+    @FXML
+    Button help;
+    @FXML
+    VBox helpScreen;
     Button current;
 
     ArrayList<Button> buttons;
@@ -98,6 +100,9 @@ public class SortingController {
         valueTypes.setOnAction(e -> switchValueType());
         valueTypes.setOnMouseEntered(e -> mouseOver(true, valueTypes));
         valueTypes.setOnMouseExited(e -> mouseOver(false, valueTypes));
+        help.setOnAction(e -> showHelp(true));
+        help.setOnMouseEntered(e -> mouseOver(true, help));
+        help.setOnMouseExited(e -> mouseOver(false, help));
         mouseOver(false, run);
         height = window.getHeight();
         width = window.getWidth();
@@ -106,6 +111,7 @@ public class SortingController {
     }
 
     private void pressed(Button b){
+        showHelp(false);
         setChosen(b);
         SceneManager.get().getSortingHandler().pressed(b.getText());
     }
@@ -117,6 +123,14 @@ public class SortingController {
         }
         current = b;
         mouseOver(false, b);
+    }
+    private void showHelp(boolean toShow){
+        if(toShow){
+            helpScreen.setOpacity(1);
+        }
+        else{
+            helpScreen.setOpacity(0);
+        }
     }
     public void setAlgorithm(String s){
         algorithm.setText(s);
@@ -135,6 +149,7 @@ public class SortingController {
     }
     @FXML
     public void switchValueType(){
+        showHelp(false);
         typeValue = !typeValue;
         SceneManager.get().getSortingHandler().typeValue(typeValue);
         if(typeValue){
@@ -146,6 +161,7 @@ public class SortingController {
     }
     @FXML
     public void setSpeed(){
+        showHelp(false);
         double value = Math.floor(slider.getValue());
         operationSpeed.setText(value+"%");
         SceneManager.get().getSortingHandler().setSpeed(value);
@@ -153,6 +169,7 @@ public class SortingController {
     }
     @FXML
     public void setArraySize(){
+        showHelp(false);
         int size = parseInt(arraySize.getText());
         SceneManager.get().getSortingHandler().setArraySize(size);
     }
@@ -163,11 +180,13 @@ public class SortingController {
         step.setText(s);
     }
     private void runSort(){
+        showHelp(false);
         setSpeed();
         setArraySize();
         SceneManager.get().getSortingHandler().run();
     }
     public void clear(){
+        showHelp(false);
         window.getChildren().clear();
         oldDraw = null;
     }
