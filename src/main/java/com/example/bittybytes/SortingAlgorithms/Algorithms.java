@@ -23,8 +23,9 @@ public class Algorithms {
                 return insertion(current);
             case "heap":
                 return heap(current);
-            case "quick":
             case "count":
+                return count(copy(current));
+            case "quick":
             case "radix":
             case "bucket":
             case "shell":
@@ -89,7 +90,53 @@ public class Algorithms {
         return arr;
     }
 
-    //region shell
+    //region count
+    public ArrayList<ArrayList<Integer>> count(ArrayList<Integer> toSort){
+        COUNTING_SORT(toSort);
+        return step;
+    }
+    private void COUNTING_SORT(ArrayList<Integer> toSort){
+        step.add(copy(toSort));
+        ArrayList<Integer> count = new ArrayList<>();
+        ArrayList<Integer> sortedArray = new ArrayList<>();
+
+        for(int i = 1; i <= toSort.size()+1; i++){ //Between min value (1) and max value (toSort.size()+1)
+            count.add(0);
+        }
+        for(int i = 0; i < toSort.size(); i++){
+            count.set(toSort.get(i), (count.get(toSort.get(i)))+1); //Set the value of spot in toSort element in count to one what it already is +1.
+            toSort.remove(i); //remove value (Not nescesarry, only for showing the same size array
+            i--;
+            //This should be outside the for loop, it is only insede to update the lists
+            sortedArray.clear();
+            for(int k = 0; k < count.size(); k++){
+                if(count.get(k) > 0){
+                    for(int j = 0; j < count.get(k); j++){
+                        sortedArray.add(k);
+                    }
+                }
+                else sortedArray.add(0);
+            }
+            step.add(collectArrayLists(copy(sortedArray), copy(toSort)));
+        }
+
+
+
+    }
+    private ArrayList<Integer> collectArrayLists(ArrayList<Integer> A, ArrayList<Integer> B){
+        ArrayList<Integer> collected = new ArrayList<>();
+        for(int i = 0; i < A.size(); i++){
+            if(A.get(i) != 0){
+                collected.add(A.get(i));
+            }
+        }
+        for(int i = 0; i < B.size(); i++){
+            if(B.get(i) != 0) collected.add(B.get(i));
+        }
+        return collected;
+    }
+
+
 
     //endregion
     //region heap
@@ -150,19 +197,6 @@ public class Algorithms {
         step.add(copy(toSort));
     }
     //endregion
-    //region bucket
-
-    //endregion
-    //region radix
-
-    //endregion
-    //region count
-
-    //endregion
-    //region quick
-
-    //endregion
-
     //region insertion
     public ArrayList<ArrayList<Integer>> insertion(ArrayList<Integer> toSort){
         INSERTION_SORT(toSort);
@@ -185,7 +219,6 @@ public class Algorithms {
     }
 
     //endregion
-
     //region selection
     public ArrayList<ArrayList<Integer>> selection(ArrayList<Integer> toSort){
         SELECTION_LOOP(toSort);
@@ -230,7 +263,6 @@ public class Algorithms {
 
 
     //endregion
-
     //region bubble
 
     private ArrayList<ArrayList<Integer>> bubble(ArrayList<Integer> toSort){
@@ -258,7 +290,6 @@ public class Algorithms {
         return toSort;
     }
     //endregion
-
     //region merge
 
     public ArrayList<ArrayList<Integer>> merge(ArrayList<Integer> toSort){

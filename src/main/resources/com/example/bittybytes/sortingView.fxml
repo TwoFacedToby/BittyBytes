@@ -215,7 +215,7 @@
                                                             <Font name="Century Gothic Bold" size="20.0" />
                                                          </font>
                                                       </Text>
-                                                      <Text fill="WHITE" layoutX="506.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Array size determines the size of the array, it will be maximum 2000 as above that the simulation starts to slow. Many sorting algorithms are fast even above this point, it is only to ease the visual aspect of them." wrappingWidth="500.0">
+                                                      <Text fill="WHITE" layoutX="506.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Array size determines the size of the array, it will be maximum 1000 as above that the simulation starts to slow. Many sorting algorithms are fast even above this point, it is only to ease the visual aspect of them." wrappingWidth="500.0">
                                                          <font>
                                                             <Font name="Century Gothic" size="16.0" />
                                                          </font>
@@ -281,16 +281,30 @@
                      <children>
                         <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="2.0" orientation="VERTICAL" prefHeight="58.0" prefWidth="999.0" vgap="2.0">
                            <children>
-                              <Button fx:id="bubble" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Bubble" />
-                              <Button fx:id="selection" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Selection" />
-                              <Button fx:id="insertion" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Insertion" />
-                              <Button fx:id="merge" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Merge" />
-                              <Button fx:id="quick" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Quick" />
-                              <Button fx:id="count" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Counting" />
-                              <Button fx:id="radix" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Radix" />
-                              <Button fx:id="bucket" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Bucket" />
-                              <Button fx:id="heap" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Heap" />
-                              <Button fx:id="shell" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Shell" />
+                              <Button fx:id="bubble" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Bubble">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font></Button>
+                              <Button fx:id="selection" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Selection">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font></Button>
+                              <Button fx:id="insertion" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Insertion">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font></Button>
+                              <Button fx:id="merge" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Merge">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font></Button>
+                              <Button fx:id="count" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Counting">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font></Button>
+                              <Button fx:id="heap" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Heap">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font></Button>
                            </children>
                         </FlowPane>
                         <Slider fx:id="slider" majorTickUnit="5.0" min="5.0" onMouseReleased="#setSpeed" showTickLabels="true" value="15.0">

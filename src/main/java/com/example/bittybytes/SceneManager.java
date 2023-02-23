@@ -1,13 +1,10 @@
 package com.example.bittybytes;
 
-import com.example.bittybytes.Controllers.LabyrinthController;
+import com.example.bittybytes.Chess.logic.ChessHandler;
+import com.example.bittybytes.Controllers.*;
 import com.example.bittybytes.Labyrinth.LabyrinthHandler;
-import com.example.bittybytes.Controllers.MenuController;
-import com.example.bittybytes.Controllers.RunnerController;
 import com.example.bittybytes.Runner.RunnerHandler;
-import com.example.bittybytes.Controllers.SnakeController;
 import com.example.bittybytes.Snake.SnakeHandler;
-import com.example.bittybytes.Controllers.SortingController;
 import com.example.bittybytes.SortingAlgorithms.SortingHandler;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -28,11 +25,13 @@ public class SceneManager {
     private AnchorPane runner;
     private AnchorPane maze;
     private AnchorPane sort;
+    private AnchorPane chess;
     public MenuController menuController;
     public SnakeController snakeController;
     public RunnerController runnerController;
     public LabyrinthController mazeController;
     public SortingController sortingController;
+    public ChessController chessController;
 
 
 
@@ -40,7 +39,7 @@ public class SceneManager {
     private RunnerHandler runnerHandler;
     private LabyrinthHandler mazeHandler;
     private SortingHandler sortingHandler;
-
+    private ChessHandler chessHandler;
     private Stage stage;
     ArrayList<String> sceneNames = new ArrayList<>();
     ArrayList<Scene> scenes = new ArrayList<>();
@@ -57,31 +56,38 @@ public class SceneManager {
     }
     private void loadScenes() throws IOException {
         //try{
-            fxmlLoader = new FXMLLoader(SceneManager.class.getResource("menu.fxml"));
-            menu = fxmlLoader.load();
-            scenes.add(new Scene(menu, 600, 400));
-            menuController = fxmlLoader.getController();
-            sceneNames.add("menu");
-            fxmlLoader = new FXMLLoader(SceneManager.class.getResource("snakeView.fxml"));
-            snake = fxmlLoader.load();
-            scenes.add(new Scene(snake, 1200, 800));
-            snakeController = fxmlLoader.getController();
-            sceneNames.add("Snake");
-            fxmlLoader = new FXMLLoader(SceneManager.class.getResource("runnerView.fxml"));
-            runner = fxmlLoader.load();
-            scenes.add(new Scene(runner, 1200, 800));
-            runnerController = fxmlLoader.getController();
-            sceneNames.add("Runner");
-            fxmlLoader = new FXMLLoader(SceneManager.class.getResource("sortingView.fxml"));
-            sort = fxmlLoader.load();
-            scenes.add(new Scene(sort, 1200, 800));
-            sortingController = fxmlLoader.getController();
-            sceneNames.add("Sorting Algorithms");
-            fxmlLoader = new FXMLLoader(SceneManager.class.getResource("labyrinth.fxml"));
-            maze = fxmlLoader.load();
-            scenes.add(new Scene(maze, 1200, 800));
-            mazeController = fxmlLoader.getController();
-            sceneNames.add("Pathfinding");
+        fxmlLoader = new FXMLLoader(SceneManager.class.getResource("menu.fxml"));
+        menu = fxmlLoader.load();
+        scenes.add(new Scene(menu, 600, 400));
+        menuController = fxmlLoader.getController();
+        sceneNames.add("menu");
+        fxmlLoader = new FXMLLoader(SceneManager.class.getResource("snakeView.fxml"));
+        snake = fxmlLoader.load();
+        scenes.add(new Scene(snake, 1200, 800));
+        snakeController = fxmlLoader.getController();
+        sceneNames.add("Snake");
+        fxmlLoader = new FXMLLoader(SceneManager.class.getResource("runnerView.fxml"));
+        runner = fxmlLoader.load();
+        scenes.add(new Scene(runner, 1200, 800));
+        runnerController = fxmlLoader.getController();
+        sceneNames.add("Runner");
+        fxmlLoader = new FXMLLoader(SceneManager.class.getResource("sortingView.fxml"));
+        sort = fxmlLoader.load();
+        scenes.add(new Scene(sort, 1200, 800));
+        sortingController = fxmlLoader.getController();
+        sceneNames.add("Sorting Algorithms");
+        fxmlLoader = new FXMLLoader(SceneManager.class.getResource("labyrinth.fxml"));
+        maze = fxmlLoader.load();
+        scenes.add(new Scene(maze, 1200, 800));
+        mazeController = fxmlLoader.getController();
+        sceneNames.add("Pathfinding");
+        fxmlLoader = new FXMLLoader(SceneManager.class.getResource("ChessView.fxml"));
+        chess = fxmlLoader.load();
+        scenes.add(new Scene(chess, 900, 900));
+        chessController = fxmlLoader.getController();
+        sceneNames.add("Chess");
+        chessHandler.get().setController(chessController);
+
 
         /*
 
@@ -113,6 +119,9 @@ public class SceneManager {
                 break;
             case "Pathfinding":
                 toMaze();
+                break;
+            case "Chess":
+                toChess();
                 break;
             default:
                 System.out.println("Cannot switch to scene, not loaded in arrayList. Switching to Main Menu instead");
@@ -186,6 +195,11 @@ public class SceneManager {
                 mazeHandler.input(t);
             }
         });
+    }
+    private void toChess(){
+        stage.setTitle("Chess");
+        stage.setScene(scenes.get(5));
+        stage.show();
     }
 
 

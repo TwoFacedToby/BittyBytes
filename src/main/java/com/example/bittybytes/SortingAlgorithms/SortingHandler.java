@@ -120,6 +120,7 @@ public class SortingHandler {
         }
         finishedCount = list.size();
         minus = Math.ceilDiv(finishedCount, 100);
+        System.out.println(finishedCount);
         updater.setUpdateSpeed(speed);
     }
     public void update(){
@@ -131,7 +132,6 @@ public class SortingHandler {
         }
         else{
             if(finishedCount > -2){
-
                 SceneManager.get().sortingController.finished(list.size()-finishedCount, minus);
                 finishedCount-= minus;
             }

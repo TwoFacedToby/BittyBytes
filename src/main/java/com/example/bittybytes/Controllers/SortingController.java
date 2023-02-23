@@ -81,12 +81,8 @@ public class SortingController {
         buttons.add(selection);
         buttons.add(insertion);
         buttons.add(merge);
-        buttons.add(quick);
         buttons.add(count);
-        buttons.add(radix);
-        buttons.add(bucket);
         buttons.add(heap);
-        buttons.add(shell);
         for(int i = 0; i < buttons.size(); i++){
             Button b = buttons.get(i);
             b.setOnAction(e -> pressed(b));
@@ -171,6 +167,10 @@ public class SortingController {
     public void setArraySize(){
         showHelp(false);
         int size = parseInt(arraySize.getText());
+        if(size > 1000){
+            size = 1000;
+            arraySize.setText("1000");
+        }
         SceneManager.get().getSortingHandler().setArraySize(size);
     }
     public void setOperations(String s){
@@ -210,7 +210,7 @@ public class SortingController {
         oldDraw = toDraw;
     }
     private void getColor(int i, Node node, int value){
-        if(oldDraw == null){
+        if(oldDraw == null || oldDraw.size()-1<i || i <= 0){
             node.setStyle("-fx-background-color: #eeeeee");
             return;
         }
