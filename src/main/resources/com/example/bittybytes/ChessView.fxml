@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bittybytes.Controllers.ChessController">
     <children>
-        <HBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <HBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10.0" style="-fx-background-color: #202020;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <VBox alignment="CENTER" maxWidth="-Infinity" prefHeight="50.0" prefWidth="200.0">
                <children>
@@ -19,7 +19,7 @@
                </children></VBox>
             <VBox alignment="CENTER" spacing="20.0">
                <children>
-                  <HBox fx:id="dead2" alignment="CENTER" prefHeight="90.0" prefWidth="800.0" style="-fx-background-color: #dddddd;" />
+                  <HBox fx:id="dead2" alignment="CENTER" prefHeight="90.0" prefWidth="800.0" style="-fx-background-color: #404040;" />
                   <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="610.0" prefWidth="610.0" style="-fx-background-color: #999999;">
                      <children>
                             <GridPane fx:id="grid" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0">
@@ -48,166 +48,166 @@
                               <RowConstraints minHeight="10.0" prefHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
                                 </rowConstraints>
                            <children>
-                              <VBox alignment="CENTER" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" />
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="1">
+                              <VBox alignment="CENTER" style="-fx-background-color: #707070;" />
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="1">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="a" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="50.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="2">
+                              <VBox alignment="CENTER" layoutX="50.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="2">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="b" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="115.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="3">
+                              <VBox alignment="CENTER" layoutX="115.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="3">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="c" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="4">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="4">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="d" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="5">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="5">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="e" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="6">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="6">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="f" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="7">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="7">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="g" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="440.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="8">
+                              <VBox alignment="CENTER" layoutX="440.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="8">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="h" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="9" />
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.rowIndex="9" />
-                              <VBox alignment="CENTER" layoutX="50.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="9" />
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.rowIndex="9" />
+                              <VBox alignment="CENTER" layoutX="50.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="1" GridPane.rowIndex="9">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="a" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="115.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                              <VBox alignment="CENTER" layoutX="115.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="2" GridPane.rowIndex="9">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="b" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="180.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="3" GridPane.rowIndex="9">
+                              <VBox alignment="CENTER" layoutX="180.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="3" GridPane.rowIndex="9">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="c" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="245.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="4" GridPane.rowIndex="9">
+                              <VBox alignment="CENTER" layoutX="245.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="4" GridPane.rowIndex="9">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="d" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="310.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="5" GridPane.rowIndex="9">
+                              <VBox alignment="CENTER" layoutX="310.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="5" GridPane.rowIndex="9">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="e" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="375.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="6" GridPane.rowIndex="9">
+                              <VBox alignment="CENTER" layoutX="375.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="6" GridPane.rowIndex="9">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="f" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="440.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="7" GridPane.rowIndex="9">
+                              <VBox alignment="CENTER" layoutX="440.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="7" GridPane.rowIndex="9">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="g" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="505.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="8" GridPane.rowIndex="9">
+                              <VBox alignment="CENTER" layoutX="505.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="8" GridPane.rowIndex="9">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="h" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="570.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="9" GridPane.rowIndex="9" />
-                              <VBox alignment="CENTER" layoutX="570.0" layoutY="570.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.rowIndex="1">
+                              <VBox alignment="CENTER" layoutX="570.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.columnIndex="9" GridPane.rowIndex="9" />
+                              <VBox alignment="CENTER" layoutX="570.0" layoutY="570.0" style="-fx-background-color: #707070;" GridPane.rowIndex="1">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="50.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.rowIndex="2">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="50.0" style="-fx-background-color: #707070;" GridPane.rowIndex="2">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.rowIndex="3">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.rowIndex="3">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.rowIndex="4">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.rowIndex="4">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.rowIndex="5">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.rowIndex="5">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.rowIndex="6">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.rowIndex="6">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="6" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="375.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.rowIndex="7">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="375.0" style="-fx-background-color: #707070;" GridPane.rowIndex="7">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="7" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.rowIndex="8">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #707070;" GridPane.rowIndex="8">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="8" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="50.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="9" GridPane.rowIndex="1">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="50.0" style="-fx-background-color: #707070;" GridPane.columnIndex="9" GridPane.rowIndex="1">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="115.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="9" GridPane.rowIndex="2">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="115.0" style="-fx-background-color: #707070;" GridPane.columnIndex="9" GridPane.rowIndex="2">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="180.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="9" GridPane.rowIndex="3">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="180.0" style="-fx-background-color: #707070;" GridPane.columnIndex="9" GridPane.rowIndex="3">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="245.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="9" GridPane.rowIndex="4">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="245.0" style="-fx-background-color: #707070;" GridPane.columnIndex="9" GridPane.rowIndex="4">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="310.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="9" GridPane.rowIndex="5">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="310.0" style="-fx-background-color: #707070;" GridPane.columnIndex="9" GridPane.rowIndex="5">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="375.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="9" GridPane.rowIndex="6">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="375.0" style="-fx-background-color: #707070;" GridPane.columnIndex="9" GridPane.rowIndex="6">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="6" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="440.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="9" GridPane.rowIndex="7">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="440.0" style="-fx-background-color: #707070;" GridPane.columnIndex="9" GridPane.rowIndex="7">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="7" />
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" layoutX="10.0" layoutY="505.0" style="-fx-background-color: #cccccc; -fx-border-color: #bbbbbb;" GridPane.columnIndex="9" GridPane.rowIndex="8">
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="505.0" style="-fx-background-color: #707070;" GridPane.columnIndex="9" GridPane.rowIndex="8">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="8" />
                                  </children>
@@ -216,7 +216,7 @@
                             </GridPane>
                      </children>
                   </VBox>
-                  <HBox fx:id="dead1" alignment="CENTER" prefHeight="90.0" prefWidth="800.0" style="-fx-background-color: #dddddd;" />
+                  <HBox fx:id="dead1" alignment="CENTER" prefHeight="90.0" prefWidth="800.0" style="-fx-background-color: #404040;" />
                </children>
             </VBox>
             <VBox alignment="CENTER" layoutX="63.0" layoutY="10.0" maxWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" />
