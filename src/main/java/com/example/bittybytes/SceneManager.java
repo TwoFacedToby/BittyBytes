@@ -29,7 +29,7 @@ public class SceneManager {
     public MenuController menuController;
     public SnakeController snakeController;
     public RunnerController runnerController;
-    public LabyrinthController mazeController;
+    public LabyrinthController labyrinthController;
     public SortingController sortingController;
     public ChessController chessController;
 
@@ -58,7 +58,7 @@ public class SceneManager {
         //try{
         fxmlLoader = new FXMLLoader(SceneManager.class.getResource("menu.fxml"));
         menu = fxmlLoader.load();
-        scenes.add(new Scene(menu, 600, 400));
+        scenes.add(new Scene(menu, 600, 600));
         menuController = fxmlLoader.getController();
         sceneNames.add("menu");
         fxmlLoader = new FXMLLoader(SceneManager.class.getResource("snakeView.fxml"));
@@ -78,9 +78,9 @@ public class SceneManager {
         sceneNames.add("Sorting Algorithms");
         fxmlLoader = new FXMLLoader(SceneManager.class.getResource("labyrinth.fxml"));
         maze = fxmlLoader.load();
-        scenes.add(new Scene(maze, 1200, 800));
-        mazeController = fxmlLoader.getController();
-        sceneNames.add("Pathfinding");
+        scenes.add(new Scene(maze, 1200, 900));
+        labyrinthController = fxmlLoader.getController();
+        sceneNames.add("Pathfinding Algorithms");
         fxmlLoader = new FXMLLoader(SceneManager.class.getResource("ChessView.fxml"));
         chess = fxmlLoader.load();
         scenes.add(new Scene(chess, 900, 900));
@@ -117,7 +117,7 @@ public class SceneManager {
             case "Sorting Algorithms":
                 toSorting();
                 break;
-            case "Pathfinding":
+            case "Pathfinding Algorithms":
                 toMaze();
                 break;
             case "Chess":
@@ -182,10 +182,10 @@ public class SceneManager {
         });
     }
     private void toMaze(){
-        stage.setTitle("Pathfinding");
+        stage.setTitle("Pathfinding Algorithms");
         stage.setScene(scenes.get(4));
         stage.show();
-        mazeController.initBoard();
+        labyrinthController.initBoard();
         mazeHandler = new LabyrinthHandler();
         mazeHandler.initiate();
         stage.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>
@@ -214,5 +214,6 @@ public class SceneManager {
     public SortingHandler getSortingHandler(){
         return sortingHandler;
     }
+    public LabyrinthHandler getMazeHandler(){return mazeHandler;}
 
 }

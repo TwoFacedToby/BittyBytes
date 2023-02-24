@@ -1,17 +1,17 @@
-package com.example.bittybytes.SortingAlgorithms;
+package com.example.bittybytes.Labyrinth;
 
-import com.example.bittybytes.SceneManager;
+import com.example.bittybytes.SortingAlgorithms.SortingHandler;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 
-public class Update {
+public class PathingUpdate {
     private Timeline frame;
 
-    SortingHandler sortingHandler;
+    LabyrinthHandler labyrinthHandler;
     boolean running = false;
-    public Update(SortingHandler sortingHandler){
-        this.sortingHandler = sortingHandler;
+    public PathingUpdate(LabyrinthHandler labyrinthHandler){
+        this.labyrinthHandler = labyrinthHandler;
     }
 
     public void setUpdateSpeed(double millis){
@@ -31,7 +31,7 @@ public class Update {
         }
     }
     private void update(){
-        sortingHandler.update();
+        labyrinthHandler.update();
     }
 
     public boolean isRunning() {

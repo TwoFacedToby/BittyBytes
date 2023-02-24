@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bittybytes.Controllers.MenuController">
+<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bittybytes.Controllers.MenuController">
    <children>
-      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: #202020;">
+      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: #202020;">
           <padding>
               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
           </padding>
@@ -19,9 +19,9 @@
                   <Font name="Century Gothic" size="38.0" />
                </font>
             </Label>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="445.0" prefWidth="560.0">
                <children>
-                  <FlowPane fx:id="flowPaneButtons" alignment="CENTER" columnHalignment="CENTER" hgap="5.0" prefHeight="200.0" prefWidth="200.0" vgap="5.0" />
+                  <FlowPane fx:id="flowPaneButtons" alignment="CENTER" columnHalignment="CENTER" hgap="5.0" prefHeight="463.0" prefWidth="560.0" rowValignment="TOP" vgap="5.0" />
                </children>
             </VBox>
          </children>

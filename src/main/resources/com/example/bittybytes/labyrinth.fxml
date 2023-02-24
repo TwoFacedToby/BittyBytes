@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -7,9 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bittybytes.Controllers.LabyrinthController">
+<AnchorPane prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bittybytes.Controllers.LabyrinthController">
     <children>
-        <VBox alignment="CENTER" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #202020;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox alignment="CENTER" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #202020;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                     <children>
@@ -50,10 +51,87 @@
                 </HBox>
                 <StackPane prefHeight="150.0" prefWidth="200.0">
                     <children>
-                        <VBox fx:id="window" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="1104.0" style="-fx-border-color: #cccccc;" />
+                        <VBox fx:id="window" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="1114.0" style="-fx-border-color: #cccccc;" />
                     </children>
                 </StackPane>
-                <HBox alignment="CENTER" layoutX="10.0" layoutY="35.0" prefHeight="100.0" prefWidth="200.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Maze Control">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="0.0" prefWidth="0.0" spacing="5.0">
+                           <children>
+                              <Button fx:id="create" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #202020; -fx-border-color: #eeeeee; -fx-text-fill: #eeeeee;" text="Create">
+                                 <font>
+                                    <Font name="Century Gothic" size="23.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="run" layoutX="610.0" layoutY="32.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="80.0" style="-fx-background-color: #202020; -fx-border-color: #eeeeee; -fx-text-fill: #eeeeee;" text="Run">
+                                 <font>
+                                    <Font name="Century Gothic" size="23.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Pixel size: ">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="0.0" spacing="5.0">
+                           <children>
+                              <Button fx:id="minus" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #202020; -fx-border-color: #eeeeee; -fx-text-fill: #eeeeee;" text="-">
+                                 <font>
+                                    <Font name="Century Gothic" size="23.0" />
+                                 </font>
+                              </Button>
+                              <Label fx:id="size" alignment="CENTER" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #202020; -fx-border-color: #eeeeee; -fx-text-fill: #eeeeee;" text="10">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="plus" layoutX="610.0" layoutY="32.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #202020; -fx-border-color: #eeeeee; -fx-text-fill: #eeeeee;" text="+">
+                                 <font>
+                                    <Font name="Century Gothic" size="23.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="400.0" layoutY="10.0" prefHeight="200.0" prefWidth="240.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Method">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="0.0" prefWidth="0.0" spacing="5.0">
+                           <children>
+                              <Button fx:id="visual" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-border-color: #eeeeee; -fx-text-fill: #eeeeee;" text="Visual">
+                                 <font>
+                                    <Font name="Century Gothic" size="23.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="instant" layoutX="610.0" layoutY="32.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" style="-fx-background-color: #202020; -fx-border-color: #eeeeee; -fx-text-fill: #808080;" text="Instant">
+                                 <font>
+                                    <Font name="Century Gothic" size="23.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
             </children>
         </VBox>
     </children>

@@ -35,7 +35,7 @@ public class MenuController {
                 b.setStyle("-fx-text-fill: #cccccc; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-background-color: #404040");
                 b.setWrapText(true);
                 b.setTextAlignment(TextAlignment.CENTER);
-                b.setPrefSize(80, 80);
+                b.setPrefSize(100, 100);
                 b.setOnMouseEntered(e -> onMouse(b,true));
                 b.setOnMouseExited(e -> onMouse(b,false));
                 flowPaneButtons.getChildren().add(b);

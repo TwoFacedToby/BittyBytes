@@ -16,7 +16,7 @@ public class SortingHandler {
     private int finishedCount = 0;
     private int minus = 0;
     private String type;
-    private Update updater = new Update(this);
+    private SortingUpdate updater = new SortingUpdate(this);
     private Algorithms algorithms = new Algorithms();
     private ArrayList<Integer> list = new ArrayList<>();
     private ArrayList<ArrayList<Integer>> all = new ArrayList<>();

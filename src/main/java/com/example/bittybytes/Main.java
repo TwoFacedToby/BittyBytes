@@ -1,10 +1,7 @@
 package com.example.bittybytes;
 
 import com.example.bittybytes.SortingAlgorithms.Algorithms;
-import com.example.bittybytes.SortingAlgorithms.Update;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
