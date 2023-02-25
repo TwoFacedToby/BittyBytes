@@ -25,7 +25,7 @@ public class LabyrinthController {
     @FXML
     Button run;
     @FXML
-    Button create;
+    Button reset;
     @FXML
             Button visual;
     @FXML
@@ -39,6 +39,8 @@ public class LabyrinthController {
     int startX = 1;
     int startY = 1;
     double pixelSize = 10;
+    int[] sizes;
+    int unEven = 0;
 
     public void initBoard(){
         drawScreen();
@@ -46,9 +48,43 @@ public class LabyrinthController {
         clickType = "start";
     }
     public void initialize(){
+        sizes = new int[4];
+        sizes[0] = 5;
+        sizes[1] = 10;
+        sizes[2] = 20;
+        sizes[3] = 40;
         run.setOnAction(e ->{ SceneManager.get().getMazeHandler().run(startX, startY); System.out.println("Run Pressed");});
         instant.setOnAction(e -> makeInstant(true));
         visual.setOnAction(e -> makeInstant(false));
+        reset.setOnAction(e -> SceneManager.get().getMazeHandler().reset());
+        minus.setOnAction(e -> changeSize(false));
+        plus.setOnAction(e -> changeSize(true));
+    }
+    private void changeSize(boolean more){
+        double temp = pixelSize;
+        if(more){//Going higher
+            for(int i = 0; i < sizes.length-1; i++){
+                if(sizes[i] == pixelSize){
+                    pixelSize = sizes[i+1];
+                    break;
+                }
+            }
+        }
+        else{//Going lower
+            for(int i = 1; i < sizes.length; i++){
+                if(sizes[i] == pixelSize){
+                    pixelSize = sizes[i-1];
+                    break;
+                }
+            }
+        }
+        if(pixelSize != temp){
+            if(unEven == 0) unEven=1;
+            else unEven = 0;
+            size.setText(((int)pixelSize)+"");
+            drawScreen();
+            SceneManager.get().getMazeHandler().reset();
+        }
     }
 
     public int getWidth() {
@@ -67,12 +103,12 @@ public class LabyrinthController {
         pixels = new ArrayList<>();
         window.getChildren().add(box);
         int n = 0, m = 0;
-        for(n = 0; n < (window.getHeight()/pixelSize)-1; n++){
-            for(m = 0;m < (window.getWidth()/pixelSize)-1; m++){
+        for(n = 0; n < (window.getHeight()/pixelSize)-(1); n++){
+            for(m = 0;m < (window.getWidth()/pixelSize)-(1); m++){
                 Button pixel = new Button();
                 pixel.setPrefSize(pixelSize, pixelSize);
                 pixel.setMaxSize(pixelSize, pixelSize);
-                pixel.setStyle("-fx-background-color: #303030; -fx-border-color: #101010; -fx-font-size: 1");
+                pixel.setStyle("-fx-background-color: #303030; -fx-font-size: 1");
                 box.getChildren().add(pixel);
                 pixels.add(pixel);
             }
@@ -82,7 +118,6 @@ public class LabyrinthController {
     }
     public void pressed(int x, int y){
         Button b = pixels.get(xyToIndex(x, y));
-        System.out.println("pressed at [" + x + ", " + y +  "]");
     }
     public void draw(MazeField[][] toDraw){
         for(int i = 0; i < toDraw.length; i++){
@@ -97,12 +132,12 @@ public class LabyrinthController {
     private void makeInstant(boolean isInstant){
         SceneManager.get().getMazeHandler().makeInstant(isInstant);
         if(isInstant){
-            instant.setStyle(instant.getStyle() + "; text-emphasis: #eeeeee");
-            visual.setStyle(visual.getStyle() + "; text-emphasis: #808080");
+            instant.setStyle(instant.getStyle() + "; -fx-text-fill: #eeeeee");
+            visual.setStyle(visual.getStyle() + "; -fx-text-fill: #808080");
         }
         else{
-            instant.setStyle(instant.getStyle() + "; text-emphasis: #808080");
-            visual.setStyle(visual.getStyle() + "; text-emphasis: #eeeeee");
+            instant.setStyle(instant.getStyle() + "; -fx-text-fill: #808080");
+            visual.setStyle(visual.getStyle() + "; -fx-text-fill: #eeeeee");
         }
     }
     public void drawAt(int x, int y, String type){
@@ -110,16 +145,16 @@ public class LabyrinthController {
         switch (type){
             case "wall":
             case "edge":
-                pixel.setStyle(pixel.getStyle() + "; -fx-background-color: #eeeeee");
+                pixel.setStyle(pixel.getStyle() + "; -fx-background-color: #346734");
                 break;
             case "path":
-                pixel.setStyle(pixel.getStyle() + "; -fx-background-color: #404040"); //Empty Path
+                pixel.setStyle(pixel.getStyle() + "; -fx-background-color: #d7cece"); //Empty Path
                 break;
             case "visitedPath":
-                pixel.setStyle(pixel.getStyle() + "; -fx-background-color: #638f63"); //Visited Path
+                pixel.setStyle(pixel.getStyle() + "; -fx-background-color: #ef2424"); //Visited Path
                 break;
             case "junction":
-                pixel.setStyle(pixel.getStyle() + "; -fx-background-color: #606060");
+                pixel.setStyle(pixel.getStyle() + "; -fx-background-color: #dc3e3e");
                 break;
             case "coin":
                 pixel.setStyle(pixel.getStyle() + "; -fx-background-color: #ffdc00");

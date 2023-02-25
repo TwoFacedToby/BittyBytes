@@ -1,6 +1,7 @@
 package com.example.bittybytes.Labyrinth;
 
 import com.example.bittybytes.SceneManager;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class LabyrinthHandler {
@@ -40,6 +41,13 @@ public class LabyrinthHandler {
             if(!update.running) update.setUpdateSpeed(40);
         }
     }
+    public void reset(){
+        width = SceneManager.get().labyrinthController.getWidth();
+        height = SceneManager.get().labyrinthController.getHeight();
+        maze = new Maze(width, height);
+        if(update.isRunning()) update.stopUpdate();
+        drawFields();
+    }
     public void initFields(int x, int y){
 
     }
@@ -55,7 +63,11 @@ public class LabyrinthHandler {
     public void changeField(String type, int x, int y){
         maze.changeField(type, x, y);
     }
-    public void input(KeyEvent t) {
-
+    public void input(KeyEvent input) {
+        if(input.getCode()== KeyCode.ESCAPE)
+        {
+            SceneManager.get().switchScene("menu");
+            return;
+        }
     }
 }

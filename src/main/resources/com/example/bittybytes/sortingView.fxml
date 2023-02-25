@@ -322,7 +322,7 @@
                               <Font name="Century Gothic" size="22.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="arraySize" alignment="CENTER" onAction="#setArraySize" prefHeight="4.0" prefWidth="230.0" style="-fx-background-color: #eeeeee; -fx-background-radius: 9;" text="1000">
+                        <TextField fx:id="arraySize" alignment="CENTER" onAction="#setArraySize" prefHeight="4.0" prefWidth="230.0" style="-fx-background-color: #eeeeee; -fx-background-radius: 9;" text="100">
                            <font>
                               <Font name="Century Gothic" size="22.0" />
                            </font>

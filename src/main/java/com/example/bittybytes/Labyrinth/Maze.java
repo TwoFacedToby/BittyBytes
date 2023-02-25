@@ -23,6 +23,8 @@ public class Maze {
     public Maze(int width, int height){
         this.width = width;
         this.height = height;
+        ends.clear();
+        oldJunctions.clear();
         makeMaze(width, height);
     }
     private void makeMaze(int x, int y){
@@ -69,7 +71,6 @@ public class Maze {
     public boolean pathMaker(){
         int x = nextX;
         int y = nextY;
-        System.out.println("Trying at [ " + x + ", " + y +"]");
         directions = getSurroundingWalls(x, y);
         if(directions.size() >= 1){
             String move = last;
