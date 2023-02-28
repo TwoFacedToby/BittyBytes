@@ -48,6 +48,7 @@ public class Maze {
         for(int i = 0; i < mazeFields.length; i++){ //Make everything wall
             for(int j = 0; j < mazeFields[i].length; j++){
                 mazeFields[i][j].setType("wall");
+                mazeFields[i][j].setPos(i, j);
             }
         }
         for(int i = 0; i < mazeFields.length; i++){ //Make edges
@@ -62,9 +63,9 @@ public class Maze {
     public void startPath(int x, int y){
         oldJunctions.clear();
         ends.clear();
-        changeField("start", 1,1);
-        nextX = 1;
-        nextY = 1;
+        changeField("start", x,y);
+        nextX = x;
+        nextY = y;
         pathMaker();
     }
 

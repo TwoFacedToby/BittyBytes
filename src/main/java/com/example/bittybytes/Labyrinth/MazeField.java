@@ -5,6 +5,9 @@ import javafx.scene.layout.VBox;
 import java.util.ArrayList;
 
 public class MazeField {
+    private int x;
+    private int y;
+
     private String type = "path";
     private ArrayList<Integer> visited = null;
 
@@ -24,5 +27,19 @@ public class MazeField {
 
     public void setVisited(ArrayList<Integer> visited) {
         this.visited = visited;
+    }
+
+
+    public void setPos(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }

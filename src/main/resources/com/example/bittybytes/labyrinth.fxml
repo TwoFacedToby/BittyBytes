@@ -8,45 +8,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bittybytes.Controllers.LabyrinthController">
+<AnchorPane prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bittybytes.Controllers.LabyrinthController">
     <children>
         <VBox alignment="CENTER" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #202020;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                     <children>
-                        <HBox alignment="CENTER" prefHeight="98.0" prefWidth="334.0">
-                            <children>
-                                <Label text="Score  " textFill="#cccccc">
-                                    <font>
-                                        <Font name="Century Gothic" size="38.0" />
-                                    </font>
-                                </Label>
-                                <Label fx:id="scoreText" text="0000" textFill="#cccccc">
-                                    <font>
-                                        <Font name="Century Gothic" size="38.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                        </HBox>
                         <Label text="Pathfinding" textFill="#cccccc">
                             <font>
                                 <Font name="Century Gothic" size="55.0" />
                             </font>
                         </Label>
-                        <HBox alignment="CENTER" layoutX="268.0" layoutY="10.0" prefHeight="98.0" prefWidth="334.0">
-                            <children>
-                                <Label text="Highscore  " textFill="#cccccc">
-                                    <font>
-                                        <Font name="Century Gothic" size="38.0" />
-                                    </font>
-                                </Label>
-                                <Label fx:id="highScoreText" text="0000" textFill="#cccccc">
-                                    <font>
-                                        <Font name="Century Gothic" size="38.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                        </HBox>
                     </children>
                 </HBox>
                 <StackPane prefHeight="150.0" prefWidth="200.0">
@@ -122,6 +94,52 @@
                                  </font>
                               </Button>
                               <Button fx:id="instant" layoutX="610.0" layoutY="32.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" style="-fx-background-color: #202020; -fx-border-color: #eeeeee; -fx-text-fill: #808080;" text="Instant">
+                                 <font>
+                                    <Font name="Century Gothic" size="23.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="490.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Positions">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" minWidth="300.0" prefHeight="0.0" prefWidth="0.0" spacing="5.0">
+                           <children>
+                              <Button fx:id="start" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" style="-fx-background-color: #202020; -fx-border-color: #eeeeee; -fx-text-fill: #eeeeee;" text="Start">
+                                 <font>
+                                    <Font name="Century Gothic" size="23.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="end" layoutX="84.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" style="-fx-background-color: #202020; -fx-border-color: #eeeeee; -fx-text-fill: #eeeeee;" text="End">
+                                 <font>
+                                    <Font name="Century Gothic" size="23.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="coin" layoutX="113.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" style="-fx-background-color: #202020; -fx-border-color: #eeeeee; -fx-text-fill: #eeeeee;" text="Coin">
+                                 <font>
+                                    <Font name="Century Gothic" size="23.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="810.0" layoutY="10.0" prefHeight="100.0" prefWidth="119.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #202020; -fx-text-fill: #eeeeee;" text="Solve">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="47.0" prefWidth="157.0" spacing="5.0">
+                           <children>
+                              <Button fx:id="solve" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #202020; -fx-border-color: #eeeeee; -fx-text-fill: #eeeeee;" text="Solve">
                                  <font>
                                     <Font name="Century Gothic" size="23.0" />
                                  </font>
