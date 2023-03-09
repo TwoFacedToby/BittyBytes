@@ -6,6 +6,7 @@ import com.example.bittybytes.Labyrinth.LabyrinthHandler;
 import com.example.bittybytes.Runner.RunnerHandler;
 import com.example.bittybytes.Snake.SnakeHandler;
 import com.example.bittybytes.SortingAlgorithms.SortingHandler;
+import com.example.bittybytes.Tetris.TetrisHandler;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -26,12 +27,14 @@ public class SceneManager {
     private AnchorPane maze;
     private AnchorPane sort;
     private AnchorPane chess;
+    private AnchorPane tetris;
     public MenuController menuController;
     public SnakeController snakeController;
     public RunnerController runnerController;
     public LabyrinthController labyrinthController;
     public SortingController sortingController;
     public ChessController chessController;
+    public TetrisController tetrisController;
 
 
 
@@ -40,6 +43,7 @@ public class SceneManager {
     private LabyrinthHandler mazeHandler;
     private SortingHandler sortingHandler;
     private ChessHandler chessHandler;
+    private TetrisHandler tetrisHandler;
     private Stage stage;
     ArrayList<String> sceneNames = new ArrayList<>();
     ArrayList<Scene> scenes = new ArrayList<>();
@@ -87,6 +91,11 @@ public class SceneManager {
         chessController = fxmlLoader.getController();
         sceneNames.add("Chess");
         chessHandler.get().setController(chessController);
+        fxmlLoader = new FXMLLoader(SceneManager.class.getResource("TetrisView.fxml"));
+        tetris = fxmlLoader.load();
+        scenes.add(new Scene(tetris, 1200, 900));
+        tetrisController = fxmlLoader.getController();
+        sceneNames.add("Tetris");
 
 
         /*
@@ -122,6 +131,9 @@ public class SceneManager {
                 break;
             case "Chess":
                 toChess();
+                break;
+            case "Tetris":
+                toTetris();
                 break;
             default:
                 System.out.println("Cannot switch to scene, not loaded in arrayList. Switching to Main Menu instead");
@@ -200,6 +212,21 @@ public class SceneManager {
         stage.setTitle("Chess");
         stage.setScene(scenes.get(5));
         stage.show();
+    }
+    private void toTetris(){
+        stage.setTitle("Tetris");
+        stage.setScene(scenes.get(6));
+        stage.show();
+        tetrisController.initBoard();
+        tetrisHandler = new TetrisHandler();
+        tetrisHandler.initiate();
+        stage.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>
+                () {
+            @Override
+            public void handle(KeyEvent t) {
+                tetrisHandler.input(t);
+            }
+        });
     }
 
 
